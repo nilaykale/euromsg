@@ -33,10 +33,10 @@ public class KaydedilenlerTest {
 		// creates a toggle for the given test, adds all log events under it    
 		ExtentTest test = extent.createTest("Kaydedilenler");
 		test.log(Status.INFO, "This step shows usage of log(status, details)");
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\nilay\\eclipse-workspace\\imdb\\lib\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "driver\\chromedriver.exe");
 
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--user-data-dir=C:\\Users\\nilay\\AppData\\Local\\Google\\Chrome\\User Data");
+		options.addArguments("--user-data-dir="+System.getProperty("user.home")+"\\AppData\\Local\\Google\\Chrome\\User Data");
 		options.addArguments("--profile-directory=Profile 3");
 		driver = new ChromeDriver(options);
 		driver.get("https://console.euromsg.com/home");
@@ -46,11 +46,11 @@ public class KaydedilenlerTest {
 
 	@BeforeTest
 	public void üyeOl() {
-		DashboardItem.click_ÜyeOl(driver).click();
+		DashboardItem.click_UyeOl(driver).click();
 		DashboardItem.click_YeniListe(driver).click();
 		DashboardItem.textbox_isim(driver).sendKeys("Liste1");
 		DashboardItem.click_Kaydet(driver).click();
-		DashboardItem.click_ÜyeEkle(driver).click();
+		DashboardItem.click_UyeEkle(driver).click();
 		DashboardItem.click_FormEkle(driver).click();
 	}
 
@@ -61,9 +61,9 @@ public class KaydedilenlerTest {
 		DashboardItem.textbox_Soyad(driver).sendKeys(soyad);
 		DashboardItem.textbox_Email(driver).sendKeys(email);
 		DashboardItem.click_Checkbox(driver).click();
-		DashboardItem.click_ÜyeKaydet(driver).click();
+		DashboardItem.click_UyeKaydet(driver).click();
 		Object[] kayıt =DashboardItem.get_LastItem(driver);
-
+       
 		Assert.assertEquals(email, kayıt[0]);
 		Assert.assertEquals(ad, kayıt[1]);		
 		Assert.assertEquals(soyad, kayıt[2]);
@@ -76,7 +76,7 @@ public class KaydedilenlerTest {
 	}
 	@DataProvider(name="test2data")
 	public Object[][] getData() {
-		String excelPath="C:\\Users\\nilay\\eclipse-workspace\\euromsgDemoProject\\excel\\Uye.xlsx";
+		String excelPath="excel\\Uye.xlsx";
 		ExcelUtils excel = new ExcelUtils(excelPath, "Sayfa1");
 		Object data [][] = excel.testData();
 		return data;

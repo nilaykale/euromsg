@@ -12,7 +12,7 @@ public class DashboardItem {
 
 	static WebDriverWait wait;
 
-	public static WebElement click_ÜyeOl(WebDriver driver) {
+	public static WebElement click_UyeOl(WebDriver driver) {
 
 		element = driver.findElement(By.xpath("//div[@class=\"page-home-square mb-3\"]"));
 
@@ -41,7 +41,7 @@ public class DashboardItem {
 		return element;
 	}
 
-	public static WebElement click_ÜyeEkle(WebDriver driver) {
+	public static WebElement click_UyeEkle(WebDriver driver) {
 
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class=\"btn btn-labeled btn-purple dropdown-toggle\"]")));
@@ -83,7 +83,7 @@ public class DashboardItem {
 		return element;
 	}
 
-	public static WebElement click_ÜyeKaydet(WebDriver driver) {
+	public static WebElement click_UyeKaydet(WebDriver driver) {
 
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class=\"btn btn-labeled btn-success\"]")));
@@ -92,7 +92,7 @@ public class DashboardItem {
 
 	public static Object[] get_LastItem(WebDriver driver) throws InterruptedException {
 
-		Thread.sleep(10000);
+		Thread.sleep(1000);
 		List<WebElement> rowElements = driver.findElements(By.xpath("//div[@class=\"table-responsive ng-star-inserted\"]/table/tbody/tr"));
 		int rowsize = rowElements.size();
 

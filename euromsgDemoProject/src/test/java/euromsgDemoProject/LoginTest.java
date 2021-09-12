@@ -31,9 +31,10 @@ public class LoginTest {
 		// creates a toggle for the given test, adds all log events under it    
 		ExtentTest test = extent.createTest("Kaydedilenler");
 		test.log(Status.INFO, "This step shows usage of log(status, details)");
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\nilay\\eclipse-workspace\\imdb\\lib\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",System.getProperty("user.home")+"\\AppData\\Local\\Google\\Chrome\\User Data");
 		driver =new ChromeDriver();
 	}
+	
 
 	@Test(dataProvider="test1data")
 	public  void Login(String email, String password) throws InterruptedException {
@@ -51,7 +52,7 @@ public class LoginTest {
 
 	@DataProvider(name="test1data")
 	public Object[][] getData() {
-		String excelPath="C:\\Users\\nilay\\eclipse-workspace\\euromsgDemoProject\\excel\\Login.xlsx";
+		String excelPath="excel\\Login.xlsx";
 		ExcelUtils excel = new ExcelUtils(excelPath, "Sayfa1");
 		Object data [][] = excel.testData();
 		return data;
